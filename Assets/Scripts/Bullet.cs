@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var collidedObject = other.gameObject;
-        Debug.Log($"Collided with {collidedObject.tag}");
+        Debug.Log($"Collided with: {collidedObject.tag}");
 
         if (collidedObject.CompareTag("Enemy"))
         {
