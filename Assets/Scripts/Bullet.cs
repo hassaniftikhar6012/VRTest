@@ -2,8 +2,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public AudioSource Source;
     public AudioClip HitSound;
+    public AudioClip FireSound;
+
+    public AudioSource Source { get; set; }
+
+    private void Start()
+    {
+        Source = EnemyManager.Instance.Source;
+        Source.PlayOneShot(FireSound);
+    }
     private void OnTriggerEnter(Collider other)
     {
         var collidedObject = other.gameObject;

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform player;
     public float spawnRadius = 5f;
+    public AudioSource Source; 
 
     #endregion
 
@@ -30,7 +32,7 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        SpawnEnemy();
+        Invoke(nameof(SpawnEnemy), 2);
         //if (orbit) orbit.enabled = true;
     }
     public void SpawnEnemy()
@@ -76,5 +78,7 @@ public class EnemyManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over");
+        GameManager.LoadScene(Constants.GameOverSceneName);
+        
     }
 }
